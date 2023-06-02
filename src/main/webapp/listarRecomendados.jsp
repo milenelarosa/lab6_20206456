@@ -15,7 +15,7 @@
             </jsp:include>
             <div class="pb-5 pt-4 px-3 titlecolor d-flex justify-content-between align-items-center">
                 <div class="col-lg-6">
-                    <h1 class='text-light'>Bienvenido, este es un ejemplo de tabla:</h1>
+                    <h1 class='text-light'>Lista de Canciones Recomendadas: </h1>
                 </div>
             </div>
             <div class="tabla">
@@ -34,9 +34,9 @@
                         <tr>
                             <td><%=lr.getIdcancion()%></td>
                             <td><%=lr.getNombre_cancion()%></td>
-                            <td><%=lr.getBanda())%></td>
+                            <td><%=lr.getBanda()%></td>
                             <td>
-                                <a href="<%=request.getContextPath()%>/listaRecomendados" class="btn btn-danger"> Mas de la banda</a>
+                                <a href="<%=request.getContextPath()%>/listaRecomendados" class="btn btn-success"> Mas de la banda</a>
                             </td>
                         </tr>
                         <% } %>

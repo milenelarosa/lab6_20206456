@@ -34,9 +34,9 @@
                         <tr>
                             <td><%=lr.getIdcancion()%></td>
                             <td><%=lr.getNombre_cancion()%></td>
-                            <td><%=lr.getBanda())%></td>
+                            <td><%=lr.getBanda()%></td>
                             <td>
-                                <a href="<%=request.getContextPath()%>/listaRecomendados" class="btn btn-danger"> Mas de la banda</a>
+                                <a href="<%=request.getContextPath()%>/listaRecomendados" class="btn btn-success"> Mas de la banda</a>
                             </td>
                         </tr>
                         <% } %>
