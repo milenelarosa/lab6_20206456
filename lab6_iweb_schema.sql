@@ -67,34 +67,18 @@ DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `lab6sw1`.`playlist`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `lab6sw1`.`playlist` (
-  `idplaylist` INT NOT NULL AUTO_INCREMENT,
-  `nombre_playlist` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idplaylist`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `lab6sw1`.`cancion`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `lab6sw1`.`cancion` (
   `idcancion` INT NOT NULL AUTO_INCREMENT,
   `nombre_cancion` VARCHAR(40) NOT NULL,
   `banda` VARCHAR(3) NOT NULL,
-  `playlist_idplaylist` INT NOT NULL,
+  `playlist_idplaylist` VARCHAR(4) NULL DEFAULT NULL,
   PRIMARY KEY (`idcancion`),
   INDEX `fk_cancion_banda1_idx` (`banda` ASC) VISIBLE,
-  INDEX `fk_cancion_playlist1_idx` (`playlist_idplaylist` ASC) VISIBLE,
   CONSTRAINT `fk_cancion_banda1`
     FOREIGN KEY (`banda`)
-    REFERENCES `lab6sw1`.`banda` (`idbanda`),
-  CONSTRAINT `fk_cancion_playlist1`
-    FOREIGN KEY (`playlist_idplaylist`)
-    REFERENCES `lab6sw1`.`playlist` (`idplaylist`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `lab6sw1`.`banda` (`idbanda`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 66
 DEFAULT CHARACTER SET = utf8mb3;
@@ -123,6 +107,17 @@ CREATE TABLE IF NOT EXISTS `lab6sw1`.`ciudad` (
   CONSTRAINT `fk_ciudad_pais1`
     FOREIGN KEY (`pais`)
     REFERENCES `lab6sw1`.`pais` (`idpais`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `lab6sw1`.`playlist`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `lab6sw1`.`playlist` (
+  `idplaylist` VARCHAR(4) NOT NULL,
+  `nombre_playlist` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idplaylist`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
