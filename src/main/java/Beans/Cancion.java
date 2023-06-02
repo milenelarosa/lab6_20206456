@@ -1,6 +1,6 @@
 package Beans;
 
-public class listaCanciones {
+public class Cancion {
     private int idcancion;
     private String nombreCancion;
     private String banda;

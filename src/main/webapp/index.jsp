@@ -1,7 +1,4 @@
-<%@ page import="Beans.listarRecomendados" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% ArrayList<listarRecomendados> lista = (ArrayList<listarRecomendados>) request.getAttribute("lista"); %>
 <html>
     <!--Colocar como value: nombre de la presente página -->
     <jsp:include page="/static/head.jsp">
@@ -22,24 +19,88 @@
                 <table class="table table-dark table-transparent table-hover">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>CANCION</th>
-                            <th>BANDA</th>
-                            <th>Ver</th>
+                            <th>#</th>
+                            <th>NOMBRE</th>
+                            <th>ROL</th>
+                            <th>CORREO</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <% for (listarRecomendados lr: lista){ %>
                         <tr>
-                            <td><%=lr.getIdcancion()%></td>
-                            <td><%=lr.getNombre_cancion()%></td>
-                            <td><%=lr.getBanda())%></td>
-                            <td>
-                                <a href="<%=request.getContextPath()%>/listaRecomendados" class="btn btn-danger"> Mas de la banda</a>
+                            <td>1
+                            </td>
+                            <td>Stuardo Lucho
+                            </td>
+                            <td>Profesor
+                            </td>
+                            <td>stuardo.lucho@pucp.edu.pe
                             </td>
                         </tr>
-                        <% } %>
+
+                        <tr>
+                            <td>2
+                            </td>
+                            <td>Oscar Diaz
+                            </td>
+                            <td>JP
+                            </td>
+                            <td>diaz.oa@pucp.edu.pe
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>3
+                            </td>
+                            <td>Mario Gustavo
+                            </td>
+                            <td>JP
+                            </td>
+                            <td>a2015@pucp.edu.pe
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>4
+                            </td>
+                            <td>Rodrigo Adauto
+                            </td>
+                            <td>JP
+                            </td>
+                            <td>a20160679@pucp.edu.pe
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4
+                            </td>
+                            <td>Álvaro Burga
+                            </td>
+                            <td>JP
+                            </td>
+                            <td>a20160679@pucp.edu.pe
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4
+                            </td>
+                            <td>Josué López
+                            </td>
+                            <td>JP
+                            </td>
+                            <td>a20160679@pucp.edu.pe
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4
+                            </td>
+                            <td> Alejandro Macedo
+                            </td>
+                            <td>JP
+                            </td>
+                            <td>a20160679@pucp.edu.pe
+                            </td>
+                        </tr>
+
                     </tbody>
                 </table>
             </div>

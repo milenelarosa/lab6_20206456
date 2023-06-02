@@ -1,14 +1,14 @@
 package Daos;
 
-import Beans.listarRecomendados;
+import Beans.Recomendados;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class listarRecomendadosDao {
-    public ArrayList<listarRecomendados> listarCancionesRecomendadas(){
+public class RecomendadosDao {
+    public ArrayList<Recomendados> listarCancionesRecomendadas(){
 
-        ArrayList <listarRecomendados> lista = new ArrayList<>();
+        ArrayList <Recomendados> lista = new ArrayList<>();
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -27,11 +27,11 @@ public class listarRecomendadosDao {
              ResultSet resultSet = smt.executeQuery(sql)) {
 
             while(resultSet.next()){
-                listarRecomendados listarRecomendados = new listarRecomendados();
-                listarRecomendados.setIdcancion(resultSet.getInt(1));
-                listarRecomendados.setNombre_cancion(resultSet.getString(2));
-                listarRecomendados.setBanda(resultSet.getString(3));
-                lista.add(listarRecomendados);
+                Recomendados Recomendados = new Recomendados();
+                Recomendados.setIdcancion(resultSet.getInt(1));
+                Recomendados.setNombre_cancion(resultSet.getString(2));
+                Recomendados.setBanda(resultSet.getString(3));
+                lista.add(Recomendados);
             }
         }catch (SQLException e){
             throw new RuntimeException(e);

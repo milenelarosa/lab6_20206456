@@ -1,6 +1,6 @@
 package Beans;
 
-public class listarRecomendados {
+public class Recomendados {
     private int idcancion;
     private String nombre_cancion;
     private String banda;
