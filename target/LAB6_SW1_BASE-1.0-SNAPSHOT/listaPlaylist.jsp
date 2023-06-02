@@ -5,13 +5,13 @@
 <html>
     <!--Colocar como value: nombre de la presente página -->
     <jsp:include page="/static/head.jsp">
-        <jsp:param name="title" value="Lista de Recomendados"/>
+        <jsp:param name="title" value="Lista de Playlist"/>
     </jsp:include>
     <body>
         <div class='container'>
             <!--Colocar como value: artistas, canciones, bandas, tours o tpc  (dependiendo de la pagina a la que corresponda) -->
             <jsp:include page="/includes/navbar.jsp">
-                <jsp:param name="page" value="recomendados"/>
+                <jsp:param name="page" value="biblioteca"/>
             </jsp:include>
 
             <div class="pb-5 pt-4 px-3 titlecolor">
@@ -46,7 +46,7 @@
                         <tr>
                             <td><%=playlist.getIdplaylist()%></td>
                             <td><%=playlist.getNombrePlaylist()%></td>
-                            <td><a href="<%=request.getContextPath()%>/listaBiblioteca?a=l&idPly=<%=playlist.getIdplaylist()%>" class="btn btn-outline-success"> Ir</a></td>
+                            <td><a href="<%=request.getContextPath()%>/listaCancionesPorPlaylist?&idPly=<%=playlist.getIdplaylist()%>" class="btn btn-outline-success"> Ir</a></td>
                             <td><a onclick="return confirm('¿Estas seguro de borrar :( ?')" class="btn btn-outline-secondary"
                                    href="<%=request.getContextPath()%>/listaBiblioteca?a=b&idPly=<%=playlist.getIdplaylist()%>">❌</a>
                             </td>
