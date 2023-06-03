@@ -7,6 +7,12 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class PlaylistDao {
+
+    private static String user = "root";
+    private static String pass = "123456";
+    private static String url = "jdbc:mysql://localhost:3306/lab6sw1?serverTimezone=America/Lima";
+
+
     public ArrayList<Playlist> listarPlaylist(){
 
         ArrayList <Playlist> listaPlaylist = new ArrayList<>();
@@ -20,7 +26,7 @@ public class PlaylistDao {
         String sql = "SELECT * FROM playlist;";
         String url = "jdbc:mysql://localhost:3306/lab6sw1?serverTimezone=America/Lima";
 
-        try (Connection connection = DriverManager.getConnection(url, "root", "123456");
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
              Statement smt = connection.createStatement();
              ResultSet resultSet = smt.executeQuery(sql)) {
 
@@ -45,7 +51,7 @@ public class PlaylistDao {
 
         String url = "jdbc:mysql://localhost:3306/lab6sw1?serverTimezone=America/Lima";
         String sql = "INSERT INTO playlist (idplaylist, nombre_playlist) VALUES (?,?)";
-        try (Connection connection = DriverManager.getConnection(url, "root", "123456");
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
              PreparedStatement pstmt = connection.prepareStatement(sql)) {
 
             pstmt.setString(1, playlist.getIdplaylist());
@@ -67,7 +73,7 @@ public class PlaylistDao {
 
         String url = "jdbc:mysql://localhost:3306/lab6sw1?serverTimezone=America/Lima";
         String sql = "DELETE FROM playlist WHERE idplaylist = ?";
-        try (Connection connection = DriverManager.getConnection(url, "root", "123456");
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
              PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, idPlaylist);
 

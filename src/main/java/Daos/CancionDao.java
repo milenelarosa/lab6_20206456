@@ -137,7 +137,6 @@ public class CancionDao {
         }
         String sql = "SELECT c.idcancion, c.nombre_cancion, c.banda\n" +
                 "FROM cancion c, playlist p WHERE c.playlist_idplaylist = p.idplaylist AND p.idplaylist = ?;";
-        String url = "jdbc:mysql://localhost:3306/lab6sw1?serverTimezone=America/Lima";
 
         try (Connection connection = DriverManager.getConnection(url, user, pass);
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {

@@ -72,7 +72,7 @@
                                     <td><%=lr.getBanda()%></td>
 
                                     <td>
-                                        <form method="POST" action="<%=request.getContextPath()%>/listaCancionesPorPlaylist?a=c">
+                                        <form method="POST" action="<%=request.getContextPath()%>/listaCancionesPorPlaylist?a=b">
                                             <input type="hidden" name="idCancion" id="idCancion" value="<%=lr.getIdcancion()%>">
                                             <input type="hidden" name="nameCancion" name="nameCancion" value="<%=lr.getNombre_cancion()%>">
                                             <input type="hidden" name="idBanda" name="idBanda" value="<%=lr.getBanda()%>">
