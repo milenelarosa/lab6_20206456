@@ -1,4 +1,3 @@
-<%@ page import="Beans.Recomendados" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Beans.Cancion" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -39,7 +38,10 @@
                             <td><%=c.getBanda()%></td>
                             <td>
                                 <button type="button" class="btn btn-danger btn-heart">
-                                    <span class="heart"></span>
+                                    <svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" data-encore-id="icon" class="Svg-sc-ytk21e-0 ldgdZj">
+                                        <path d="M15.724 4.22A4.313 4.313 0 0 0 12.192.814a4.269 4.269 0 0 0-3.622 1.13.837.837 0 0 1-1.14 0 4.272 4.272 0 0 0-6.21 5.855l5.916 7.05a1.128 1.128 0 0 0 1.727 0l5.916-7.05a4.228 4.228 0 0 0 .945-3.577z">
+                                        </path>
+                                    </svg>
                                 </button>
                             </td>
                         </tr>
