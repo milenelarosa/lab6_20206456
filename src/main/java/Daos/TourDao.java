@@ -1,5 +1,6 @@
 package Daos;
 
+import Beans.Recomendados;
 import Beans.Tour;
 
 import java.sql.*;
@@ -8,31 +9,35 @@ import java.util.ArrayList;
 public class TourDao {
 
     private static String user = "root";
-    private static String pass = "root";
+    private static String pass = "123456";
     private static String url = "jdbc:mysql://localhost:3306/lab6sw1?serverTimezone=America/Lima";
 
 
-    public ArrayList<Tour> obtenerListaTours(){
+    public ArrayList<Tour> listarTour(){
+
+        ArrayList <Tour> listaTours = new ArrayList<>();
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e){
             e.printStackTrace();
         }
-        ArrayList<Tour> listaTours = new ArrayList<>();
-        try (Connection conn = DriverManager.getConnection(url, user, pass);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("select * from tour where nombre_tour like '%world%'")) {
 
-            while (rs.next()) {
-                int id = rs.getInt(1);
-                String nombre = rs.getString(2);
-                String banda = rs.getString(3);
+        String sql = "SELECT * FROM tour r;";
 
-                listaTours.add(new Tour(id,nombre,banda));
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             Statement smt = connection.createStatement();
+             ResultSet resultSet = smt.executeQuery(sql)) {
+
+            while(resultSet.next()){
+                Tour tour = new Tour();
+                tour.setIdTour(resultSet.getInt(1));
+                tour.setNombre_Tour(resultSet.getString(2));
+                tour.setIdbanda(resultSet.getString(3));
+                listaTours.add(tour);
             }
-
-        } catch (SQLException e) {
-            System.out.println("No se pudo realizar la busqueda");
+        }catch (SQLException e){
+            throw new RuntimeException(e);
         }
         return listaTours;
     }

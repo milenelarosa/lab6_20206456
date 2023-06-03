@@ -5,12 +5,6 @@ public class Tour {
     private String nombre_Tour;
     private String idbanda;
 
-    public Tour(int idTour, String nombre_Tour, String idbanda) {
-        this.idTour = idTour;
-        this.nombre_Tour = nombre_Tour;
-        this.idbanda = idbanda;
-    }
-
     public int getIdTour() {
         return idTour;
     }
