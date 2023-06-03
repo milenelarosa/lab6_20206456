@@ -21,9 +21,11 @@ public class CancionServlet extends HttpServlet {
         response.setContentType("text/html");
 
         CancionDao cancionDao = new CancionDao();
+        request.setAttribute("lista", cancionDao.listarCanciones());
+
         String bandaId = request.getParameter("idbanda");
 
-        request.setAttribute("lista", cancionDao.listarCanciones());
+
         request.setAttribute("listaCancionBanda", cancionDao.listarCancionePorBanda(bandaId));
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("listaCanciones.jsp");

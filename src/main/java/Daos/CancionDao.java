@@ -23,7 +23,6 @@ public class CancionDao {
         }
 
         String sql = "SELECT * from cancion;";
-        String url = "jdbc:mysql://localhost:3306/lab6sw1?serverTimezone=America/Lima";
 
         try (Connection connection = DriverManager.getConnection(url, user, pass);
              Statement smt = connection.createStatement();
@@ -215,4 +214,58 @@ public class CancionDao {
         }
         return listaCancionPlaylist;
     }
+
+
+    public void crearCancionenFavorito (Cancion cancion) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String sql = "INSERT INTO favorito (idcancion, nombre_cancion, banda) VALUES (?,?,?)";
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+            pstmt.setInt(1, cancion.getIdcancion());
+            pstmt.setString(2, cancion.getNombreCancion());
+            pstmt.setString(3, cancion.getBanda());
+
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public ArrayList<Cancion> listarFavorito(){
+
+        ArrayList <Cancion> listaFavorito = new ArrayList<>();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        String sql = "SELECT * from favorito;";
+
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             Statement smt = connection.createStatement();
+             ResultSet resultSet = smt.executeQuery(sql)) {
+
+            while(resultSet.next()){
+                Cancion Cancion = new Cancion();
+                Cancion.setIdcancion(resultSet.getInt(1));
+                Cancion.setNombreCancion(resultSet.getString(2));
+                Cancion.setBanda(resultSet.getString(3));
+                listaFavorito.add(Cancion);
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return listaFavorito;
+    }
+
 }

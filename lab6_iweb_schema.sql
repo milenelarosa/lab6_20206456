@@ -175,6 +175,22 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
 
+-- -----------------------------------------------------
+-- Table `lab6sw1`.`favorito`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `lab6sw1`.`favorito` (
+  `idcancion` INT NOT NULL,
+  `nombre_cancion` VARCHAR(40) NOT NULL,
+  `banda` VARCHAR(3) NOT NULL,
+  INDEX `fk_cancion_banda1_idx` (`banda` ASC) VISIBLE,
+  CONSTRAINT `fk_cancion_banda10`
+    FOREIGN KEY (`banda`)
+    REFERENCES `lab6sw1`.`banda` (`idbanda`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 66
+DEFAULT CHARACTER SET = utf8mb3;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

@@ -1,8 +1,9 @@
 package Servlets;
 
 import Beans.Cancion;
+import Beans.Playlist;
 import Daos.CancionDao;
-import Daos.CancionDePlaylistDao;
+import Daos.PlaylistDao;
 import Daos.RecomendadosDao;
 
 import javax.servlet.RequestDispatcher;
@@ -13,40 +14,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "CancionDePlaylistServlet",urlPatterns = "/listaCancionesPorPlaylist")
-public class CancionDePlaylistServlet extends HttpServlet {
+@WebServlet(name = "FavoritosServlet",urlPatterns = "/listaFavoritos")
+public class FavoritosServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        response.setContentType("text/html");
-
         CancionDao cancionDao = new CancionDao();
-        RecomendadosDao recomendadosDao = new RecomendadosDao();
-
-        String plyId = request.getParameter("idPly");
-        request.setAttribute("listaCancionPlaylist", cancionDao.listarCancionesPlaylist(plyId));
-        request.setAttribute("listaRecomendados", recomendadosDao.listarCancionesRecomendadas());
-
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("listaCancionesPorPlaylist.jsp");
-        requestDispatcher.forward(request,response);
-
-
         String action = request.getParameter("a") == null ? "listar" : request.getParameter("a");
 
         switch (action) {
-
-            case "c":
-                String id = request.getParameter("idCancion");
-                request.getRequestDispatcher("listaCancionesPorPlaylist.jsp").forward(request, response);
+            case "l":
+                request.setAttribute("listaFavorito", cancionDao.listarFavorito());
+                request.getRequestDispatcher("listaFavoritos.jsp").forward(request, response);
                 break;
-
-            case "b":
-                String idStr = request.getParameter("idCancion");
-                int id1 = Integer.parseInt(idStr);
-                cancionDao.obteneridCancion(id1);
-                response.sendRedirect(request.getContextPath() + "/listaCancionesPorPlaylist");
+            case "c":
+                request.getRequestDispatcher("listaFavoritos.jsp").forward(request, response);
+                break;
         }
-
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -54,14 +38,16 @@ public class CancionDePlaylistServlet extends HttpServlet {
                 request.getParameter("p");
 
         CancionDao cancionDao = new CancionDao();
+
         switch (action) {
             case "crear":
                 Cancion cancion = parseCancion(request);
-                cancionDao.crearCancion(cancion);
+                cancionDao.crearCancionenFavorito(cancion);
 
-                response.sendRedirect(request.getContextPath() + "/listaCancionesPorPlaylist");
+                response.sendRedirect(request.getContextPath() + "/listaFavoritos?a=l");
                 break;
         }
+
     }
 
     public Cancion parseCancion(HttpServletRequest request) {

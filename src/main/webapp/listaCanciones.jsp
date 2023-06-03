@@ -37,12 +37,16 @@
                             <td><%=c.getNombreCancion()%></td>
                             <td><%=c.getBanda()%></td>
                             <td>
-                                <button type="button" class="btn btn-danger btn-heart">
-                                    <svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" data-encore-id="icon" class="Svg-sc-ytk21e-0 ldgdZj">
-                                        <path d="M15.724 4.22A4.313 4.313 0 0 0 12.192.814a4.269 4.269 0 0 0-3.622 1.13.837.837 0 0 1-1.14 0 4.272 4.272 0 0 0-6.21 5.855l5.916 7.05a1.128 1.128 0 0 0 1.727 0l5.916-7.05a4.228 4.228 0 0 0 .945-3.577z">
-                                        </path>
-                                    </svg>
-                                </button>
+                                <form method="post" action="<%=request.getContextPath()%>/listaFavoritos?a=l">
+                                    <input type="hidden" name="idCancion" id="idCancion" value="<%=c.getIdcancion()%>">
+                                    <input type="hidden" name="nameCancion" name="nameCancion" value="<%=c.getNombreCancion()%>">
+                                    <input type="hidden" name="idBanda" name="idBanda" value="<%=c.getBanda()%>">
+                                    <button type="submit" class="btn btn-heart <%= lista.contains(c.getIdcancion()) ? "btn-success" : "btn-danger" %>">
+                                        <svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" data-encore-id="icon" class="Svg-sc-ytk21e-0 ldgdZj">
+                                            <path d="M15.724 4.22A4.313 4.313 0 0 0 12.192.814a4.269 4.269 0 0 0-3.622 1.13.837.837 0 0 1-1.14 0 4.272 4.272 0 0 0-6.21 5.855l5.916 7.05a1.128 1.128 0 0 0 1.727 0l5.916-7.05a4.228 4.228 0 0 0 .945-3.577z"></path>
+                                        </svg>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         <% } %>

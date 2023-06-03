@@ -21,6 +21,15 @@
                     <br>
                     <div class="row">
                         <div class="col-lg-6">
+                            <h2 class="text-light">Tus me gusta</h2>
+
+                            <a class="btn btn-light" href="<%=request.getContextPath()%>/listaFavoritos?a=l">Ir a mis canciones favoritas</a>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-6">
                             <h2 class="text-light">Tus Playlists</h2>
                         </div>
                         <div class="col-lg-6 text-right">

@@ -22,11 +22,6 @@ public class RecomendadosServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("listaRecomendados.jsp");
         requestDispatcher.forward(request,response);
 
-        CancionDao cancionDao = new CancionDao();
-        String bandaId = request.getParameter("idbanda");
-        request.setAttribute("listaCancionBanda", cancionDao.obteneridBanda(bandaId));
-        RequestDispatcher requestDispatcher1 = request.getRequestDispatcher("listaCanciones.jsp");
-        requestDispatcher1.forward(request,response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
